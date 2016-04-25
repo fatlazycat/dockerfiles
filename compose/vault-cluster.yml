@@ -1,0 +1,10 @@
+vault1:
+  image: "fatlazycat/vault:latest"
+  container_name: "vault1"
+  hostname: "vault1"
+  ports:
+    - "8200:8200"
+  volumes:
+    - ~/Development/Environment/Vault/config:/config
+    - ~/Development/Environment/Consul/ssl:/ssl
+  command: "server -config-dir /config"
