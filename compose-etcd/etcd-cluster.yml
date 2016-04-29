@@ -11,23 +11,23 @@ services:
       - "4001:4001"
     volumes:
       - ~/Development/Environment/Consul/ssl:/etc/ssl/certs
-    environment:
-      ETCD_NAME: "etcd0"
-      ETCD_ADVERTISE_CLIENT_URLS: https://etcd0:2379,https://etcd0:4001
-      ETCD_LISTEN_CLIENT_URLS: https://0.0.0.0:2379,https://0.0.0.0:4001
-      ETCD_INITIAL_ADVERTISE_PEER_URLS: https://etcd0:2380
-      ETCD_LISTEN_PEER_URLS: https://0.0.0.0:2380
-      ETCD_CLIENT_CERT_AUTH: "true"
-      ETCD_CERT_FILE: "/etc/ssl/certs/consul.cert"
-      ETCD_KEY_FILE: "/etc/ssl/certs/consul.key"
-      ETCD_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
-      ETCD_PEER_CLIENT_CERT_AUTH: "true"
-      ETCD_PEER_CERT_FILE: "/etc/ssl/certs/consul.cert"
-      ETCD_PEER_KEY_FILE: "/etc/ssl/certs/consul.key"
-      ETCD_PEER_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
-      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster-1"
-      ETCD_INITIAL_CLUSTER: etcd0=https://etcd0:2380,etcd1=https://etcd1:2380,etcd2=https://etcd2:2380
-      ETCD_INITIAL_CLUSTER_STATE: "new"
+    command:
+      - --name=etcd0
+      - --initial-cluster-token=etcd-cluster-1
+      - --initial-cluster=etcd0=http://etcd0:2380,etcd1=http://etcd1:2380,etcd2=http://etcd2:2380
+      - --initial-cluster-state=new
+      - --initial-advertise-peer-urls=http://etcd0:2380
+      - --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --advertise-client-urls=http://etcd0:2379
+      - --client-cert-auth=true
+      - --cert-file=/etc/ssl/certs/consul.cert
+      - --key-file=/etc/ssl/certs/consul.key
+      - --trusted-ca-file=/etc/ssl/certs/ca.cert
+      - --peer-client-cert-auth=true
+      - --peer-cert-file=/etc/ssl/certs/consul.cert
+      - --peer-key-file=/etc/ssl/certs/consul.key
+      - --peer-trusted-ca-file=/etc/ssl/certs/ca.cert
 
   etcd1:
     image: "quay.io/coreos/etcd:latest"
@@ -39,23 +39,23 @@ services:
       - 4001
     volumes:
       - ~/Development/Environment/Consul/ssl:/etc/ssl/certs
-    environment:
-      ETCD_NAME: "etcd1"
-      ETCD_ADVERTISE_CLIENT_URLS: https://etcd1:2379,https://etcd1:4001
-      ETCD_LISTEN_CLIENT_URLS: https://0.0.0.0:2379
-      ETCD_INITIAL_ADVERTISE_PEER_URLS: https://etcd1:2380
-      ETCD_LISTEN_PEER_URLS: https://0.0.0.0:2380
-      ETCD_CLIENT_CERT_AUTH: "true"
-      ETCD_CERT_FILE: "/etc/ssl/certs/consul.cert"
-      ETCD_KEY_FILE: "/etc/ssl/certs/consul.key"
-      ETCD_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
-      ETCD_PEER_CLIENT_CERT_AUTH: "true"
-      ETCD_PEER_CERT_FILE: "/etc/ssl/certs/consul.cert"
-      ETCD_PEER_KEY_FILE: "/etc/ssl/certs/consul.key"
-      ETCD_PEER_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
-      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster-1"
-      ETCD_INITIAL_CLUSTER: etcd0=https://etcd0:2380,etcd1=https://etcd1:2380,etcd2=https://etcd2:2380
-      ETCD_INITIAL_CLUSTER_STATE: "new"
+    command:
+      - --name=etcd1
+      - --initial-cluster-token=etcd-cluster-1
+      - --initial-cluster=etcd0=http://etcd0:2380,etcd1=http://etcd1:2380,etcd2=http://etcd2:2380
+      - --initial-cluster-state=new
+      - --initial-advertise-peer-urls=http://etcd1:2380
+      - --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --advertise-client-urls=http://etcd1:2379
+      - --client-cert-auth=true
+      - --cert-file=/etc/ssl/certs/consul.cert
+      - --key-file=/etc/ssl/certs/consul.key
+      - --trusted-ca-file=/etc/ssl/certs/ca.cert
+      - --peer-client-cert-auth=true
+      - --peer-cert-file=/etc/ssl/certs/consul.cert
+      - --peer-key-file=/etc/ssl/certs/consul.key
+      - --peer-trusted-ca-file=/etc/ssl/certs/ca.cert
 
   etcd2:
     image: "quay.io/coreos/etcd:latest"
@@ -67,20 +67,20 @@ services:
       - 4001
     volumes:
       - ~/Development/Environment/Consul/ssl:/etc/ssl/certs
-    environment:
-      ETCD_NAME: "etcd2"
-      ETCD_ADVERTISE_CLIENT_URLS: https://etcd2:2379,https://etcd2:4001
-      ETCD_LISTEN_CLIENT_URLS: https://0.0.0.0:2379
-      ETCD_INITIAL_ADVERTISE_PEER_URLS: https://etcd2:2380
-      ETCD_LISTEN_PEER_URLS: https://0.0.0.0:2380
-      ETCD_CLIENT_CERT_AUTH: "true"
-      ETCD_CERT_FILE: "/etc/ssl/certs/consul.cert"
-      ETCD_KEY_FILE: "/etc/ssl/certs/consul.key"
-      ETCD_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
-      ETCD_PEER_CLIENT_CERT_AUTH: "true"
-      ETCD_PEER_CERT_FILE: "/etc/ssl/certs/consul.cert"
-      ETCD_PEER_KEY_FILE: "/etc/ssl/certs/consul.key"
-      ETCD_PEER_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
-      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster-1"
-      ETCD_INITIAL_CLUSTER: etcd0=https://etcd0:2380,etcd1=https://etcd1:2380,etcd2=https://etcd2:2380
-      ETCD_INITIAL_CLUSTER_STATE: "new"
+    command:
+      - --name=etcd2
+      - --initial-cluster-token=etcd-cluster-1
+      - --initial-cluster=etcd0=http://etcd0:2380,etcd1=http://etcd1:2380,etcd2=http://etcd2:2380
+      - --initial-cluster-state=new
+      - --initial-advertise-peer-urls=http://etcd2:2380
+      - --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --advertise-client-urls=http://etcd2:2379
+      - --client-cert-auth=true
+      - --cert-file=/etc/ssl/certs/consul.cert
+      - --key-file=/etc/ssl/certs/consul.key
+      - --trusted-ca-file=/etc/ssl/certs/ca.cert
+      - --peer-client-cert-auth=true
+      - --peer-cert-file=/etc/ssl/certs/consul.cert
+      - --peer-key-file=/etc/ssl/certs/consul.key
+      - --peer-trusted-ca-file=/etc/ssl/certs/ca.cert
