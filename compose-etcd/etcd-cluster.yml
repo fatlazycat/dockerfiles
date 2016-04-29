@@ -1,0 +1,83 @@
+version: '2'
+
+services:
+  etcd0:
+    image: "quay.io/coreos/etcd:latest"
+    container_name: "etcd0"
+    hostname: "etcd0"
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    volumes:
+      - ~/Development/Environment/Consul/ssl:/etc/ssl/certs
+    environment:
+      ETCD_NAME: "etcd0"
+      ETCD_ADVERTISE_CLIENT_URLS: https://etcd0:2379
+      ETCD_LISTEN_CLIENT_URLS: https://0.0.0.0:2379
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: https://etcd0:2380
+      ETCD_LISTEN_PEER_URLS: https://0.0.0.0:2380
+      ETCD_CLIENT_CERT_AUTH: "true"
+      ETCD_CERT_FILE: "/etc/ssl/certs/consul.cert"
+      ETCD_KEY_FILE: "/etc/ssl/certs/consul.key"
+      ETCD_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
+      ETCD_PEER_CLIENT_CERT_AUTH: "true"
+      ETCD_PEER_CERT_FILE: "/etc/ssl/certs/consul.cert"
+      ETCD_PEER_KEY_FILE: "/etc/ssl/certs/consul.key"
+      ETCD_PEER_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
+      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster-1"
+      ETCD_INITIAL_CLUSTER: etcd0=https://etcd0:2380,etcd1=https://etcd1:2480,etcd2=https://etcd2:2580
+      ETCD_INITIAL_CLUSTER_STATE: "new"
+
+  etcd1:
+    image: "quay.io/coreos/etcd:latest"
+    container_name: "etcd1"
+    hostname: "etcd1"
+    ports:
+      - "2479:2479"
+      - "2480:2480"
+    volumes:
+      - ~/Development/Environment/Consul/ssl:/etc/ssl/certs
+    environment:
+      ETCD_NAME: "etcd1"
+      ETCD_ADVERTISE_CLIENT_URLS: https://etcd1:2479
+      ETCD_LISTEN_CLIENT_URLS: https://0.0.0.0:2479
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: https://etcd1:2480
+      ETCD_LISTEN_PEER_URLS: https://0.0.0.0:2480
+      ETCD_CLIENT_CERT_AUTH: "true"
+      ETCD_CERT_FILE: "/etc/ssl/certs/consul.cert"
+      ETCD_KEY_FILE: "/etc/ssl/certs/consul.key"
+      ETCD_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
+      ETCD_PEER_CLIENT_CERT_AUTH: "true"
+      ETCD_PEER_CERT_FILE: "/etc/ssl/certs/consul.cert"
+      ETCD_PEER_KEY_FILE: "/etc/ssl/certs/consul.key"
+      ETCD_PEER_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
+      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster-1"
+      ETCD_INITIAL_CLUSTER: etcd0=https://etcd0:2380,etcd1=https://etcd1:2480,etcd2=https://etcd2:2580
+      ETCD_INITIAL_CLUSTER_STATE: "new"
+
+  etcd2:
+    image: "quay.io/coreos/etcd:latest"
+    container_name: "etcd2"
+    hostname: "etcd2"
+    ports:
+      - "2579:2579"
+      - "2580:2580"
+    volumes:
+      - ~/Development/Environment/Consul/ssl:/etc/ssl/certs
+    environment:
+      ETCD_NAME: "etcd2"
+      ETCD_ADVERTISE_CLIENT_URLS: https://etcd2:2579
+      ETCD_LISTEN_CLIENT_URLS: https://0.0.0.0:2579
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: https://etcd2:2580
+      ETCD_LISTEN_PEER_URLS: https://0.0.0.0:2580
+      ETCD_CLIENT_CERT_AUTH: "true"
+      ETCD_CERT_FILE: "/etc/ssl/certs/consul.cert"
+      ETCD_KEY_FILE: "/etc/ssl/certs/consul.key"
+      ETCD_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
+      ETCD_PEER_CLIENT_CERT_AUTH: "true"
+      ETCD_PEER_CERT_FILE: "/etc/ssl/certs/consul.cert"
+      ETCD_PEER_KEY_FILE: "/etc/ssl/certs/consul.key"
+      ETCD_PEER_TRUSTED_CA_FILE: "/etc/ssl/certs/ca.cert"
+      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster-1"
+      ETCD_INITIAL_CLUSTER: etcd0=https://etcd0:2380,etcd1=https://etcd1:2480,etcd2=https://etcd2:2580
+      ETCD_INITIAL_CLUSTER_STATE: "new"
