@@ -21,8 +21,8 @@ services:
       - --listen-peer-urls=https://0.0.0.0:2380
       - --advertise-client-urls=https://etcd1:2379
       - --client-cert-auth
-      - --cert-file=/etc/ssl/certs/server.pem
-      - --key-file=/etc/ssl/certs/server-key.pem
+      - --cert-file=/etc/ssl/certs/member1.pem
+      - --key-file=/etc/ssl/certs/member1-key.pem
       - --trusted-ca-file=/etc/ssl/certs/ca.pem
       - --peer-client-cert-auth
       - --peer-cert-file=/etc/ssl/certs/member1.pem
@@ -50,8 +50,8 @@ services:
       - --listen-peer-urls=https://0.0.0.0:2380
       - --advertise-client-urls=https://etcd2:2379
       - --client-cert-auth
-      - --cert-file=/etc/ssl/certs/server.pem
-      - --key-file=/etc/ssl/certs/server-key.pem
+      - --cert-file=/etc/ssl/certs/member2.pem
+      - --key-file=/etc/ssl/certs/member2-key.pem
       - --trusted-ca-file=/etc/ssl/certs/ca.pem
       - --peer-client-cert-auth
       - --peer-cert-file=/etc/ssl/certs/member2.pem
@@ -78,8 +78,8 @@ services:
       - --listen-peer-urls=https://0.0.0.0:2380
       - --advertise-client-urls=https://etcd3:2379
       - --client-cert-auth
-      - --cert-file=/etc/ssl/certs/server.pem
-      - --key-file=/etc/ssl/certs/server-key.pem
+      - --cert-file=/etc/ssl/certs/member3.pem
+      - --key-file=/etc/ssl/certs/member3-key.pem
       - --trusted-ca-file=/etc/ssl/certs/ca.pem
       - --peer-client-cert-auth
       - --peer-cert-file=/etc/ssl/certs/member3.pem
