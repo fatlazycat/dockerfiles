@@ -28,6 +28,7 @@ services:
       - --peer-cert-file=/etc/ssl/certs/member1.pem
       - --peer-key-file=/etc/ssl/certs/member1-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
+      - --data-dir=~/Development/Environment/Etcd/data/n1
       - --debug
 
   etcd2:
@@ -57,6 +58,7 @@ services:
       - --peer-cert-file=/etc/ssl/certs/member2.pem
       - --peer-key-file=/etc/ssl/certs/member2-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
+      - --data-dir=~/Development/Environment/Etcd/data/n2
 
   etcd3:
     image: "quay.io/coreos/etcd:latest"
@@ -85,3 +87,4 @@ services:
       - --peer-cert-file=/etc/ssl/certs/member3.pem
       - --peer-key-file=/etc/ssl/certs/member3-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
+      - --data-dir=~/Development/Environment/Etcd/data/n3
