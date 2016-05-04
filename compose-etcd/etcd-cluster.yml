@@ -10,6 +10,7 @@ services:
       - "2380:2380"
       - "4001:4001"
     volumes:
+      - ~/Development/Environment/Etcd/data/n1:/data
       - ~/Development/Environment/Etcd/cfssl:/etc/ssl/certs
     command:
       - --name=etcd1
@@ -28,7 +29,7 @@ services:
       - --peer-cert-file=/etc/ssl/certs/member1.pem
       - --peer-key-file=/etc/ssl/certs/member1-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
-      - --data-dir=~/Development/Environment/Etcd/data/n1
+      - --data-dir=/data
       - --debug
 
   etcd2:
@@ -40,6 +41,7 @@ services:
       - 2380
       - 4001
     volumes:
+      - ~/Development/Environment/Etcd/data/n2:/data
       - ~/Development/Environment/Etcd/cfssl:/etc/ssl/certs
     command:
       - --name=etcd2
@@ -58,7 +60,7 @@ services:
       - --peer-cert-file=/etc/ssl/certs/member2.pem
       - --peer-key-file=/etc/ssl/certs/member2-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
-      - --data-dir=~/Development/Environment/Etcd/data/n2
+      - --data-dir=/data
 
   etcd3:
     image: "quay.io/coreos/etcd:latest"
@@ -69,6 +71,7 @@ services:
       - 2380
       - 4001
     volumes:
+      - ~/Development/Environment/Etcd/data/n3:/data
       - ~/Development/Environment/Etcd/cfssl:/etc/ssl/certs
     command:
       - --name=etcd3
@@ -87,4 +90,4 @@ services:
       - --peer-cert-file=/etc/ssl/certs/member3.pem
       - --peer-key-file=/etc/ssl/certs/member3-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
-      - --data-dir=~/Development/Environment/Etcd/data/n3
+      - --data-dir=/data
