@@ -22,12 +22,12 @@ services:
       - --listen-peer-urls=https://0.0.0.0:2380
       - --advertise-client-urls=https://etcd1:2379
       - --client-cert-auth
-      - --cert-file=/etc/ssl/certs/member1.pem
-      - --key-file=/etc/ssl/certs/member1-key.pem
+      - --cert-file=/etc/ssl/certs/etcd1.docker.pem
+      - --key-file=/etc/ssl/certs/etcd1.docker-key.pem
       - --trusted-ca-file=/etc/ssl/certs/ca.pem
       - --peer-client-cert-auth
-      - --peer-cert-file=/etc/ssl/certs/member1.pem
-      - --peer-key-file=/etc/ssl/certs/member1-key.pem
+      - --peer-cert-file=/etc/ssl/certs/etcd1.docker.pem
+      - --peer-key-file=/etc/ssl/certs/etcd1.docker-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
       - --data-dir=/data
       - --debug
@@ -53,12 +53,12 @@ services:
       - --listen-peer-urls=https://0.0.0.0:2380
       - --advertise-client-urls=https://etcd2:2379
       - --client-cert-auth
-      - --cert-file=/etc/ssl/certs/member2.pem
-      - --key-file=/etc/ssl/certs/member2-key.pem
+      - --cert-file=/etc/ssl/certs/etcd2.docker.pem
+      - --key-file=/etc/ssl/certs/etcd2.docker-key.pem
       - --trusted-ca-file=/etc/ssl/certs/ca.pem
       - --peer-client-cert-auth
-      - --peer-cert-file=/etc/ssl/certs/member2.pem
-      - --peer-key-file=/etc/ssl/certs/member2-key.pem
+      - --peer-cert-file=/etc/ssl/certs/etcd2.docker.pem
+      - --peer-key-file=/etc/ssl/certs/etcd2.docker-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
       - --data-dir=/data
 
@@ -83,11 +83,11 @@ services:
       - --listen-peer-urls=https://0.0.0.0:2380
       - --advertise-client-urls=https://etcd3:2379
       - --client-cert-auth
-      - --cert-file=/etc/ssl/certs/member3.pem
-      - --key-file=/etc/ssl/certs/member3-key.pem
+      - --cert-file=/etc/ssl/certs/etcd3.docker.pem
+      - --key-file=/etc/ssl/certs/etcd3.docker-key.pem
       - --trusted-ca-file=/etc/ssl/certs/ca.pem
       - --peer-client-cert-auth
-      - --peer-cert-file=/etc/ssl/certs/member3.pem
-      - --peer-key-file=/etc/ssl/certs/member3-key.pem
+      - --peer-cert-file=/etc/ssl/certs/etcd3.docker.pem
+      - --peer-key-file=/etc/ssl/certs/etcd3.docker-key.pem
       - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem
       - --data-dir=/data
