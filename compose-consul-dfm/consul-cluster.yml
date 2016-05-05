@@ -1,0 +1,41 @@
+consul1-dfm:
+  image: "fatlazycat/consul:latest"
+  container_name: "consul1-dfm"
+  hostname: "consul1-dfm"
+  ports:
+    - "8180:8080"
+  volumes:
+    - ~/Development/Environment/Consul/data-dfm/n1:/data
+    - ~/Development/Environment/Consul/config/server:/config
+    - ~/Development/Environment/Consul/ssl:/ssl
+  command: "agent -config-dir /config -bootstrap-expect 3"
+  #command: "agent -config-dir /config"
+
+consul2-dfm:
+  image: "fatlazycat/consul:latest"
+  container_name: "consul2-dfm"
+  hostname: "consul2-dfm"
+  ports:
+    - "8181:8080"
+  volumes:
+    - ~/Development/Environment/Consul/data-dfm/n2:/data
+    - ~/Development/Environment/Consul/config/server:/config
+    - ~/Development/Environment/Consul/ssl:/ssl
+  links:
+    - "consul1-dfm:consul1-dfm"
+  command: "agent -config-dir /config -join consul1-dfm"
+
+consul3-dfm:
+  image: "fatlazycat/consul:latest"
+  container_name: "consul3-dfm"
+  hostname: "consul3-dfm"
+  ports:
+    - "8182:8080"
+  volumes:
+    - ~/Development/Environment/Consul/data-dfm/n3:/data
+    - ~/Development/Environment/Consul/config/server:/config
+    - ~/Development/Environment/Consul/ssl:/ssl
+  links:
+    - "consul1-dfm:consul1-dfm"
+    - "consul2-dfm:consul2-dfm"
+  command: "agent -config-dir /config -join consul1-dfm"
