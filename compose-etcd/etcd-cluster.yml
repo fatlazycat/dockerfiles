@@ -15,12 +15,20 @@ services:
     command:
       - --name=etcd1
       - --initial-cluster-token=etcd-cluster-1
-      - --initial-cluster=etcd1=http://etcd1.docker:2380,etcd2=http://etcd2.docker:2480,etcd3=http://etcd3.docker:2580
+      - --initial-cluster=etcd1=https://etcd1.docker:2380,etcd2=https://etcd2.docker:2480,etcd3=https://etcd3.docker:2580
       - --initial-cluster-state=new
-      - --initial-advertise-peer-urls=http://etcd1.docker:2380
-      - --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001
-      - --listen-peer-urls=http://0.0.0.0:2380
-      - --advertise-client-urls=http://etcd1.docker:2379
+      - --initial-advertise-peer-urls=https://etcd1.docker:2380
+      - --listen-client-urls=https://0.0.0.0:2379,https://0.0.0.0:4001
+      - --listen-peer-urls=https://0.0.0.0:2380
+      - --advertise-client-urls=https://etcd1.docker:2379
+      - --client-cert-auth
+      - --cert-file=/etc/ssl/certs/etcd1.docker.pem
+      - --key-file=/etc/ssl/certs/etcd1.docker-key.pem
+      - --trusted-ca-file=/etc/ssl/certs/ca.pem
+      - --peer-client-cert-auth
+      - --peer-cert-file=/etc/ssl/certs/etcd1.docker.pem
+      - --peer-key-file=/etc/ssl/certs/etcd1.docker-key.pem
+      - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem      
       - --data-dir=/data
       - --debug
 
@@ -38,12 +46,20 @@ services:
     command:
       - --name=etcd2
       - --initial-cluster-token=etcd-cluster-1
-      - --initial-cluster=etcd1=http://etcd1.docker:2380,etcd2=http://etcd2.docker:2480,etcd3=http://etcd3.docker:2580
+      - --initial-cluster=etcd1=https://etcd1.docker:2380,etcd2=https://etcd2.docker:2480,etcd3=https://etcd3.docker:2580
       - --initial-cluster-state=new
-      - --initial-advertise-peer-urls=http://etcd2.docker:2480
-      - --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001
-      - --listen-peer-urls=http://0.0.0.0:2380
-      - --advertise-client-urls=http://etcd2.docker:2479
+      - --initial-advertise-peer-urls=https://etcd2.docker:2480
+      - --listen-client-urls=https://0.0.0.0:2379,https://0.0.0.0:4001
+      - --listen-peer-urls=https://0.0.0.0:2380
+      - --advertise-client-urls=https://etcd2.docker:2479
+      - --client-cert-auth
+      - --cert-file=/etc/ssl/certs/etcd2.docker.pem
+      - --key-file=/etc/ssl/certs/etcd2.docker-key.pem
+      - --trusted-ca-file=/etc/ssl/certs/ca.pem
+      - --peer-client-cert-auth
+      - --peer-cert-file=/etc/ssl/certs/etcd2.docker.pem
+      - --peer-key-file=/etc/ssl/certs/etcd2.docker-key.pem
+      - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem      
       - --data-dir=/data
 
   etcd3:
@@ -60,10 +76,18 @@ services:
     command:
       - --name=etcd3
       - --initial-cluster-token=etcd-cluster-1
-      - --initial-cluster=etcd1=http://etcd1.docker:2380,etcd2=http://etcd2.docker:2480,etcd3=http://etcd3.docker:2580
+      - --initial-cluster=etcd1=https://etcd1.docker:2380,etcd2=https://etcd2.docker:2480,etcd3=https://etcd3.docker:2580
       - --initial-cluster-state=new
-      - --initial-advertise-peer-urls=http://etcd3.docker:2580
-      - --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001
-      - --listen-peer-urls=http://0.0.0.0:2380
-      - --advertise-client-urls=http://etcd3.docker:2579
+      - --initial-advertise-peer-urls=https://etcd3.docker:2580
+      - --listen-client-urls=https://0.0.0.0:2379,https://0.0.0.0:4001
+      - --listen-peer-urls=https://0.0.0.0:2380
+      - --advertise-client-urls=https://etcd3.docker:2579
+      - --client-cert-auth
+      - --cert-file=/etc/ssl/certs/etcd3.docker.pem
+      - --key-file=/etc/ssl/certs/etcd3.docker-key.pem
+      - --trusted-ca-file=/etc/ssl/certs/ca.pem
+      - --peer-client-cert-auth
+      - --peer-cert-file=/etc/ssl/certs/etcd3.docker.pem
+      - --peer-key-file=/etc/ssl/certs/etcd3.docker-key.pem
+      - --peer-trusted-ca-file=/etc/ssl/certs/ca.pem      
       - --data-dir=/data
