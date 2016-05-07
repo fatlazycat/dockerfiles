@@ -8,8 +8,8 @@ consul1:
     - ~/Development/Environment/Consul/data/n1:/data
     - ~/Development/Environment/Consul/config/server:/config
     - ~/Development/Environment/Consul/ssl:/ssl
-  command: "agent -config-dir /config -bootstrap-expect 3"
-  #command: "agent -config-dir /config"
+  # command: "agent -config-dir /config -bootstrap-expect 3"
+  command: "agent -config-dir /config"
 
 consul2:
   image: "fatlazycat/consul:latest"
