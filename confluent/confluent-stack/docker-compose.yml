@@ -17,7 +17,7 @@ services:
       - /Users/graham/Development/var/kafka/zk-txn-logs:/var/lib/zookeeper/log
 
   kafka:
-    image: confluentinc/cp-kafka:3.0.1
+    image: fatlazycat/cp-kafka-wait:3.0.1
     container_name: "kafka"
     hostname: "kafka"
     links:
@@ -31,6 +31,7 @@ services:
       KAFKA_DELETE_TOPIC_ENABLE: "true"
     ports:
       - "9092:9092"
+    entrypoint: /wait-for-it.sh zookeeper.docker:2181
     volumes:
       - /Users/graham/Development/var/kafka/kafka-data:/var/lib/kafka/data
 
