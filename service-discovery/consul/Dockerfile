@@ -1,6 +1,6 @@
 FROM alpine:3.3
 
-ENV CONSUL_VERSION 0.6.4
+ENV CONSUL_VERSION 0.7.2
 
 RUN  apk add --update ca-certificates \
   && wget https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip \
